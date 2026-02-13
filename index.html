@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Narine ❤️</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .counter {
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+
+      img {
+        width: 80%;
+        max-width: 280px;
+        border-radius: 20px;
+        box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        margin-bottom: 20px;
+      }
+
+      .buttons {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        height: 80px;
+      }
+
+      button {
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .yes {
+        background: #28a745;
+        color: white;
+      }
+
+      .no {
+        background: #222;
+        color: white;
+        position: absolute;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 18px;
+        animation: float 5s linear infinite;
+      }
+
+      @keyframes float {
+        from {
+          transform: translateY(100vh);
+        }
+        to {
+          transform: translateY(-10vh);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Narine, will you be my Valentine? 💖</h1>
+
+    <div class="counter" id="loveCounter"></div>
+
+    <img src="photo.jpg" alt="Our photo" />
+
+    <div class="buttons">
+      <button class="yes" onclick="accepted()">Yes 😍</button>
+      <button class="no" id="noBtn" ontouchstart="moveButton()">No 😢</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+      <source src="music.mp3" type="audio/mpeg" />
+    </audio>
+
+    <script>
+      // Запуск музыки после первого касания
+      document.body.addEventListener(
+        "touchstart",
+        function () {
+          document.getElementById("bgMusic").play();
+        },
+        { once: true },
+      );
+
+      function accepted() {
+        document.body.innerHTML = `
+        <h1>I love you, Narine ❤️</h1>
+        <p style="margin-top:20px; font-size:18px;">
+        Forever since March 2, 2023 💍
+        </p>
+    `;
+      }
+
+      // Убегающая кнопка (адаптирована под экран телефона)
+      function moveButton() {
+        const button = document.getElementById("noBtn");
+        const maxX = window.innerWidth - 100;
+        const maxY = window.innerHeight - 50;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        button.style.position = "fixed";
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+      }
+
+      // Счётчик отношений
+      function updateCounter() {
+        const startDate = new Date("March 2, 2023 00:00:00");
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+        document.getElementById("loveCounter").innerHTML =
+          "Together for " +
+          days +
+          " days, " +
+          hours +
+          " hours and " +
+          minutes +
+          " minutes ❤️";
+      }
+
+      setInterval(updateCounter, 1000);
+      updateCounter();
+
+      // Плавающие сердечки
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 15 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }, 400);
+    </script>
+  </body>
+</html>
