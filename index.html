@@ -97,7 +97,7 @@
 
     <div class="buttons">
       <button class="yes" onclick="accepted()">Yes 😍</button>
-      <button class="no" id="noBtn" ontouchstart="moveButton()">No 😢</button>
+      <button class="no" id="noBtn">No 😢</button>
     </div>
 
     <audio id="bgMusic" loop>
@@ -116,26 +116,32 @@
 
       function accepted() {
         document.body.innerHTML = `
-        <h1>I love you, Narine ❤️</h1>
-        <p style="margin-top:20px; font-size:18px;">
-        Forever since March 2, 2023 💍
-        </p>
-    `;
+          <h1>I love you, Narine ❤️</h1>
+          <p style="margin-top:20px; font-size:18px;">
+            Forever since March 2, 2023 💍
+          </p>
+        `;
       }
 
-      // Убегающая кнопка (адаптирована под экран телефона)
+      // Убегающая кнопка
+      const noBtn = document.getElementById("noBtn");
+
       function moveButton() {
-        const button = document.getElementById("noBtn");
-        const maxX = window.innerWidth - 100;
-        const maxY = window.innerHeight - 50;
+        const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+        const maxY = window.innerHeight - noBtn.offsetHeight - 20;
 
         const randomX = Math.random() * maxX;
         const randomY = Math.random() * maxY;
 
-        button.style.position = "fixed";
-        button.style.left = randomX + "px";
-        button.style.top = randomY + "px";
+        noBtn.style.position = "fixed";
+        noBtn.style.left = randomX + "px";
+        noBtn.style.top = randomY + "px";
       }
+
+      // Для мыши
+      noBtn.addEventListener("mouseenter", moveButton);
+      // Для тачскрина
+      noBtn.addEventListener("touchstart", moveButton);
 
       // Счётчик отношений
       function updateCounter() {
