@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For Narine ❤️</title>
+    <title>For Narine 💜</title>
 
     <style>
       * {
@@ -14,14 +14,14 @@
 
       body {
         height: 100vh;
-        background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+        background: #ffffff; /* белый фон */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         font-family: Arial, sans-serif;
         text-align: center;
-        color: white;
+        color: #4b0082; /* основной фиолетовый цвет текста */
         overflow: hidden;
         padding: 20px;
       }
@@ -40,7 +40,7 @@
         width: 80%;
         max-width: 280px;
         border-radius: 20px;
-        box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        box-shadow: 0 0 25px rgba(75, 0, 130, 0.3); /* лёгкая фиолетовая тень */
         margin-bottom: 20px;
       }
 
@@ -61,12 +61,12 @@
       }
 
       .yes {
-        background: #28a745;
+        background: #800080; /* насыщенный фиолетовый */
         color: white;
       }
 
       .no {
-        background: #222;
+        background: #551a8b; /* темный фиолетовый */
         color: white;
         position: absolute;
       }
@@ -75,6 +75,7 @@
         position: absolute;
         font-size: 18px;
         animation: float 5s linear infinite;
+        color: #9b30ff; /* фиолетовый сердечек */
       }
 
       @keyframes float {
@@ -89,7 +90,7 @@
   </head>
 
   <body>
-    <h1>Narine, will you be my Valentine? 💖</h1>
+    <h1>Narine, will you be my Valentine? 💜</h1>
 
     <div class="counter" id="loveCounter"></div>
 
@@ -116,7 +117,7 @@
 
       function accepted() {
         document.body.innerHTML = `
-          <h1>I love you, Narine ❤️</h1>
+          <h1>I love you, Narine 💜</h1>
           <p style="margin-top:20px; font-size:18px;">
             Forever since March 2, 2023 💍
           </p>
@@ -138,9 +139,7 @@
         noBtn.style.top = randomY + "px";
       }
 
-      // Для мыши
       noBtn.addEventListener("mouseenter", moveButton);
-      // Для тачскрина
       noBtn.addEventListener("touchstart", moveButton);
 
       // Счётчик отношений
@@ -160,7 +159,7 @@
           hours +
           " hours and " +
           minutes +
-          " minutes ❤️";
+          " minutes 💜";
       }
 
       setInterval(updateCounter, 1000);
@@ -170,7 +169,7 @@
       setInterval(() => {
         const heart = document.createElement("div");
         heart.classList.add("heart");
-        heart.innerHTML = "❤️";
+        heart.innerHTML = "💜";
         heart.style.left = Math.random() * 100 + "vw";
         heart.style.fontSize = Math.random() * 15 + 15 + "px";
         document.body.appendChild(heart);
